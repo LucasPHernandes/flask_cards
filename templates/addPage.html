@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-    <title>Dashboard</title>
+    <title>Adicionar Card</title>
 {% endblock%}
 
 {% block body %}
@@ -12,9 +12,15 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <h1>Olá, isso é um pequeno teste de login... {{ user_id }} </h1>
+    <form class="login_form" action="" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.cardName }}
+        {{ form.cardContent }}
+        {{ form.submit }}
+    </form>
+    <h1>Olá, isso é um pequeno teste para adicionar um novo FlashCard {{ user_id }} </h1>
 
-    <a href="/adicionar/{{user_id}}">Adicionar</a>
+    <a href="">Adicionar</a>
 
     <a href="/logout">Deslogar</a>
 {% endblock %}

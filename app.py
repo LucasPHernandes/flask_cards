@@ -50,6 +50,13 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField("Login")
 
+class AddCard(FlaskForm):
+    cardName = StringField(validators=[InputRequired(), Length(min=5, max=25)], render_kw={"placeholder": "Nome do Card"})
+
+    cardContent = StringField(validators=[InputRequired(), Length(min=5, max=25)], render_kw={"placeholder": "Conteúdo do Card"})
+
+    submit = SubmitField("Adicionar")
+
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
@@ -63,7 +70,7 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
-                user_id = current_user.id
+                user_id = int(current_user.id)
                 return redirect(url_for('dashboard', user_id=user_id))
     return render_template('login.html', form=form)
 
@@ -91,6 +98,13 @@ def logout():
 def dashboard(user_id):
     user_id = user_id
     return render_template('dashboard.html', user_id=user_id)
+
+@app.route('/adicionar/<user_id>', methods=['POST', 'GET'])
+@login_required
+def adicionarCard(user_id):
+    form = AddCard()
+    return render_template('addPage.html', form=form, user_id=user_id)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
