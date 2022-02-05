@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* PÁGINA INICIAL - HOMEPAGE */
+.mainPage {
+    background-image: url('../img/Bg_homePage.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70vh;
+    /* padding: 50vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainPage h1 {
+    color: #FFFFFF;
+    font-size: 3em;
+}
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botão HomePage */
+/* From cssbuttons.io by @adamgiebl */
+.mainPage_button {
+    margin-top: 2%;
+}
+
+.cssbuttons-io-button {
+    background: #40B437;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 1.4em;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #379930;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+}
+   
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #379930;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+   
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+   
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #40B437;
+}
+   
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+   
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+}
+
+/* PÁGINA DE LOGIN */
+.main_LoginPage {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left_loginPage {
+    background-image: url('../img/Bg_loginPage.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left_loginPage h1, h3 {
+    position: relative;
+    left: 25%;
+    padding: 0;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.left_loginPage h1 {
+    font-size: 3em;
+}
+.left_loginPage h3 {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+/* BTN LOGAR */
+/* From cssbuttons.io */
+.login_SubmitBTN {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top: 15px;
+}
+   
+.login_SubmitBTN:hover {
+    background-color: #40B437;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+   
+.login_SubmitBTN:active {
+    transform: translateY(-1px);
+}
+
+.right_loginPage {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.right_loginPage h1 {
+    position: relative;
+    bottom: 15%;
+    font-size: 3em;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+}
+
+.right_loginPage a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 100px;
+    font-weight: bold;
+}
+
+.right_loginPage a:hover {
+    text-decoration: underline;
+}
+
+.login_form .login_input  {
+    margin-bottom: 5px;
+    border: none;
+    padding: 15px;
+    background-color: #e7fae4;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    width: 80%;
+}
