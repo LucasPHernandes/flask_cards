@@ -5,14 +5,21 @@
 {% endblock%}
 
 {% block body %}
-    {% with messages = get_flashed_messages(with_categories=true) %}
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for message in messages %}
                 {{ message }}
             {% endfor %}
         {% endif %}
-    {% endwith %}
+    {% endwith %} -->
     <h1>Olá, isso é um pequeno teste de login... {{ user_id }} </h1>
+
+    {% for card in cards %}
+        <div class="card">
+            {{ card.cardName }} <br>
+            {{ card.cardContent }} <br><br>
+        </div>
+    {% endfor %}
 
     <a href="/adicionar/{{user_id}}">Adicionar</a>
 

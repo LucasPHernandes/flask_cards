@@ -28,6 +28,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(100), nullable=False)
 
+class flashCard(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    idUsername = db.Column(db.String(200), nullable=False)
+    cardName = db.Column(db.String(100), nullable=False)
+    cardContent = db.Column(db.String(250), nullable=False)
+
 # Criando Formulário de Registro
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
@@ -51,9 +57,9 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Login")
 
 class AddCard(FlaskForm):
-    cardName = StringField(validators=[InputRequired(), Length(min=5, max=25)], render_kw={"placeholder": "Nome do Card"})
+    cardName = StringField(validators=[InputRequired(), Length(min=4, max=100)], render_kw={"placeholder": "Nome do Card"})
 
-    cardContent = StringField(validators=[InputRequired(), Length(min=5, max=25)], render_kw={"placeholder": "Conteúdo do Card"})
+    cardContent = StringField(validators=[InputRequired(), Length(min=4, max=250)], render_kw={"placeholder": "Conteúdo do Card"})
 
     submit = SubmitField("Adicionar")
 
@@ -97,13 +103,30 @@ def logout():
 @login_required
 def dashboard(user_id):
     user_id = user_id
-    return render_template('dashboard.html', user_id=user_id)
+    
+    check_id = flashCard.query.get(current_user.id)
+
+    cards = flashCard.query.filter_by(idUsername = check_id.id)
+    # print(cards)
+    if check_id.id == current_user.id:
+        return render_template('dashboard.html', user_id=current_user.id, cards=cards)
+    
+    return render_template('dashboard.html', user_id=current_user.id)
+        
+        
+    
 
 @app.route('/adicionar/<user_id>', methods=['POST', 'GET'])
 @login_required
 def adicionarCard(user_id):
     form = AddCard()
-    return render_template('addPage.html', form=form, user_id=user_id)
+    if form.validate_on_submit():
+        # cardName = flashCard.query.filter_by(cardName = form.cardName.data)
+        # if not cardName:
+        new_card = flashCard(idUsername = current_user.id, cardName = form.cardName.data, cardContent = form.cardContent.data)
+        db.session.add(new_card)
+        db.session.commit()
+    return render_template('addPage.html', form=form, user_id=current_user.id)
 
 
 if __name__ == "__main__":
