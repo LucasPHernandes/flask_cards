@@ -198,3 +198,108 @@ body{
     font-family: 'Roboto', sans-serif;
     width: 80%;
 }
+
+/* DASHBOARD */
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #CAFFC6;
+}
+
+.menu input {
+    background-color: #CAFFC6;
+    border: 2px solid #99ADA8;
+    border-radius: 42.21px;
+    width: 300px;
+    height: 30px;
+}
+
+.menu input::placeholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #99ADA8;
+    font-size: 1em;
+    padding: 10px;
+}
+
+#deslogar {
+    position: relative;
+    left: 35%;
+}
+
+.dash_title {
+    position: relative;
+    left: 3%;
+    font-size: 3.2em;
+    width: 100vw;
+}
+
+.float {
+    position: fixed;
+    width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+    background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #708882;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.md-48 {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.md-48:hover {
+    color: #dbdbdb;
+}
+
+.md-60 {
+    text-decoration: none;
+    color: #99ADA8;
+}
+
+.md-60:hover {
+    color: #708882;
+}
+
+.cards_grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    position: relative;
+    left: 4%;
+}
+
+.card {
+    width: 260px;
+    height: 250px;
+    background: linear-gradient(43deg, #AAB378 0%, #4CDF34 100%);
+    border-radius: 28px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card_text {
+    padding-left: 13px;
+    color: white;
+    margin-bottom: 2px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card_text h4 {
+    font-size: 35px;
+}

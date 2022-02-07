@@ -104,14 +104,15 @@ def logout():
 def dashboard(user_id):
     user_id = user_id
     
-    check_id = flashCard.query.get(current_user.id)
-
-    cards = flashCard.query.filter_by(idUsername = check_id.id)
-    # print(cards)
-    if check_id.id == current_user.id:
-        return render_template('dashboard.html', user_id=current_user.id, cards=cards)
-    
-    return render_template('dashboard.html', user_id=current_user.id)
+    # print(user_id)
+    try:
+        check_id = flashCard.query.get(current_user.id)
+        cards = flashCard.query.filter_by(idUsername = check_id.id)
+        if cards:
+            if check_id.id == current_user.id:
+                return render_template('dashboard.html', user_id=current_user.id, cards=cards)
+    except:
+        return render_template('dashboard.html', user_id=current_user.id)
         
         
     

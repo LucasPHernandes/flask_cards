@@ -2,26 +2,37 @@
 
 {% block head %}
     <title>Dashboard</title>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 {% endblock%}
 
 {% block body %}
-    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        {% endif %}
-    {% endwith %} -->
-    <h1>Olá, isso é um pequeno teste de login... {{ user_id }} </h1>
 
-    {% for card in cards %}
+    <nav class="menu">
+        <input type="text" placeholder="Pesquisar" name="" id="">
+        <a href="/logout" id="deslogar" class="md-60" ><span class="material-icons md-60">
+            logout
+        </span></a>
+    </nav>
+    
+    <h1 class="dash_title">Seus Cards</h1>
+    
+    <div class="cards_grid">
+        {% for card in cards %}
         <div class="card">
-            {{ card.cardName }} <br>
-            {{ card.cardContent }} <br><br>
+            <h4 class="card_text">{{ card.cardName }}</h4> 
+            <p class="card_text">{{ card.cardContent }}</p>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    
+    <div class="float">
+        <a href="/adicionar/{{user_id}}" class="md-48"><span class="material-icons md-48 icon_float">
+            post_add
+        </span></a>
+    </div>
 
-    <a href="/adicionar/{{user_id}}">Adicionar</a>
-
-    <a href="/logout">Deslogar</a>
 {% endblock %}
