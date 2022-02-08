@@ -5,6 +5,20 @@
     <style>
         body {
             overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
         }
     </style>
 {% endblock%}
@@ -21,6 +35,12 @@
     <h1 class="dash_title">Seus Cards</h1>
     
     <div class="cards_grid">
+        {% if not card %}
+            <p class="no_card">Não há nenhum card em seu Flashmind...</p>
+        {% else %}
+
+        {% endif %}
+
         {% for card in cards %}
         <div class="card">
             <h4 class="card_text">{{ card.cardName }}</h4> 
@@ -30,9 +50,10 @@
     </div>
     
     <div class="float">
-        <a href="/adicionar/{{user_id}}" class="md-48"><span class="material-icons md-48 icon_float">
+        <a href="/adicionar/{{current_user.id}}" class="md-48"><span class="material-icons md-48 icon_float">
             post_add
         </span></a>
     </div>
+
 
 {% endblock %}

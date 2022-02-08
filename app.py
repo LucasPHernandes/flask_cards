@@ -106,13 +106,16 @@ def dashboard(user_id):
     
     # print(user_id)
     try:
+        card = True
         check_id = flashCard.query.get(current_user.id)
         cards = flashCard.query.filter_by(idUsername = check_id.id)
         if cards:
             if check_id.id == current_user.id:
-                return render_template('dashboard.html', user_id=current_user.id, cards=cards)
+                return render_template('dashboard.html', card=card, user_id=current_user.id, cards=cards)
     except:
-        return render_template('dashboard.html', user_id=current_user.id)
+        card = False
+        # no_card = 'Não há nenhum card em seu Flashmind...'
+        return render_template('dashboard.html', card=card, user_id=current_user.id)
         
         
     

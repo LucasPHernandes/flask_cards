@@ -2,24 +2,32 @@
 
 {% block head %}
     <title>Adicionar Card</title>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 {% endblock%}
 
 {% block body %}
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <form class="login_form" action="" method="post">
-        {{ form.hidden_tag() }}
-        {{ form.cardName }}
-        {{ form.cardContent }}
-        {{ form.submit }}
-    </form>
-    <h1>Olá, isso é um pequeno teste para adicionar um novo FlashCard {{ user_id }} </h1>
 
+    <nav class="menu">
+        <a href="/logout" id="deslogar" class="md-60 md" ><span class="material-icons md-60">
+            logout
+        </span></a>
+    </nav>
+    
+    <h1 class="dash_title">Adicionar Card</h1>
 
-    <a href="/dashboard/{{user_id}}">Cancelar</a>
+    <div class="add">
+        <form class="login_form card_form" action="" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.cardName(class='login_input card_input') }}
+            {{ form.cardContent(class='login_input card_input') }}
+            {{ form.submit(class='login_SubmitBTN') }}
+        </form>
+
+        <a href="/dashboard/{{user_id}}">Cancelar</a>
+    </div>
+
 {% endblock %}
